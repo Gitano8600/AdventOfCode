@@ -5,7 +5,7 @@ final_value = 0
 list_of_histories = []
 
 for line in values:
-    tuple_of_seq = ((tuple(int(i) for i in line.split(" ")),))
+    tuple_of_seq = ((tuple(int(i) for i in line.split(" "))[::-1],))
     zero_reached = True
 
     while zero_reached:

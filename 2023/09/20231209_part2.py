@@ -3,28 +3,22 @@ values = file.read().splitlines()
 final_value = 0
 
 list_of_histories = []
-list_all_seq = [[*map(int, line.split())] for line in values]
 
-
-for seq in list_all_seq:
-    list_cur_seq = [seq[::-1]]
+for line in values:
+    tuple_of_seq = ((tuple(int(i) for i in line.split(" "))[::-1],))
     zero_reached = True
 
     while zero_reached:
-        next_list = [x[0] - x[1] for x in zip(list_cur_seq[-1][1:], list_cur_seq[-1])]
-        print(next_list)
-        list_cur_seq.append(next_list)
-        zero_reached = any(next_list)
+        next_tuple = tuple([x[0] - x[1] for x in zip(tuple_of_seq[-1][1:], tuple_of_seq[-1])])
+        tuple_of_seq = (tuple_of_seq) + (next_tuple,)
+        zero_reached = any(next_tuple)
 
-    list_of_histories.append(list_cur_seq)
-
+    list_of_histories.append(tuple_of_seq)
 
 for history in list_of_histories:
     history_value = 0
-
     for i in reversed(range(len(history))):
         history_value += history[i-1][-1]
-
     final_value += history_value
 
 print(final_value)
