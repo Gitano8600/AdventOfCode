@@ -1,7 +1,6 @@
 file = open("input.txt", "r")
 values = file.read().splitlines()
 
-print(values)
 current_calories = 0
 highest_calories = 0
 
