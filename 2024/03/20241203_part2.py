@@ -19,7 +19,6 @@ for sequence in valid_sections:
 
 for pair in filtered_matches:
     x, y = pair.split(',')
-    print('x,y', x, y)
     result += int(x) * int(y)
 
 print(result)
